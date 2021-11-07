@@ -22,7 +22,7 @@ npx hardhat help
 
 
 # Known Bugs
-Bug: Error HH1: You are not inside a Hardhat project. This is due to Bash on windows not booting the hardhat project creation. The initia setup must be on windos terminal CMD.
+Solution for Bug Error HH1: You are not inside a Hardhat project. This is due to Bash on windows not booting the hardhat project creation. The initial setup must be on windos terminal CMD.
 ```shell
 npm init -y
 npm install --save-dev hardhat
@@ -31,13 +31,13 @@ npx hardhat
 ```
 
 
-BUG error:03000086: Node17 digital envelope routines::unsupported
+Solution for Bug error:03000086: Node17 digital envelope routines::unsupported
 ```shell
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 
-Bug HH108: Cannot connect to the network localhost.
+Solution for Bug HH108: Cannot connect to the network localhost.
 ```shell
 npx hardhat node --hostname 127.0.0.1
 ```
