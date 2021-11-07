@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm-run-all build:*",
+    "start": "npm run --prefix app start",
+    "build": "npm run --prefix app build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
