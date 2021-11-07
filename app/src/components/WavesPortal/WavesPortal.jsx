@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { ethers } from "ethers";
+//import { ethers } from "ethers";
 import './WavesPortal.css';
 
 
+
+
 export default class WavesPortal extends Component {
-
-
-	render() {
-		return (
-			<div className="mainContainer">
+    render() {
+        return (
+        <div className="mainContainer">
 				<div className="dataContainer">
 					<div className="header">
 					👋 Hey there!
@@ -21,6 +21,6 @@ export default class WavesPortal extends Component {
 					</button>
 				</div>
 			</div>
-		);
-	}
+        );
+    }
 }
