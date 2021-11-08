@@ -9,7 +9,7 @@
 }
 
 .info {
-	background-color:#354559 !important;
+	background-color: #354559 !important;
 	color: #babcbc;
 	border-bottom: none;
 	color: aliceblue;
@@ -26,6 +26,7 @@
 
 
 .searchBar {
+	contain: content;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -50,15 +51,15 @@
 	align-content: center;
 	-webkit-box-shadow: 0 2px 16px rgb(0 0 0 / 5%);
 	box-shadow: 0 2px 16px rgb(0 0 0 / 5%);
-	border-radius: 4px;
+	border-radius: 5px;
 	margin-bottom: -40px;
 }
 
 input:focus,
 .searchBar input {
-   border: none!important;
-	-webkit-transition: none!important;
-	transition: none!important;
+	border: none !important;
+	-webkit-transition: none !important;
+	transition: none !important;
 	height: 70px;
 }
 
@@ -83,4 +84,15 @@ span.search {
 	background: white;
 	height: 70px;
 	padding: 0 10px;
+}
+
+tbody tr:hover {
+	background-color: #e0e4e8 !important;
+}
+
+table.striped.highlight {
+	border-radius: 5px;
+	contain: content;
+	-webkit-box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
