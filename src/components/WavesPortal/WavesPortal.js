@@ -125,7 +125,7 @@ const wave = async () => {
         </div>
 
         <div className="bio">
-        I am Alejandro and I hack on the weekends so that's pretty cool right? Connect your Ethereum wallet and wave at me!
+        I am Alejandro and my idea is to be able to give the community access to report portfolios that harm the ethereum ecosystem. If you like my idea for the builspace hackathon. Connect your Ethereum wallet and wave at me!
         </div>
 
 			{currentAccount && (
