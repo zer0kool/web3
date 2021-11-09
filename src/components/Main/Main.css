@@ -81,6 +81,7 @@ span.txt {
 
 span.search {
 	width: -webkit-fill-available;
+	width: -moz-available;
 	background: white;
 	height: 70px;
 	padding: 0 10px;
