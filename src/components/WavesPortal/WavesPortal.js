@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import './WavesPortal.css';
-
+import M from "materialize-css";
 
 //contract
 import abi from './utils/WavePortal.json';
 
 export default function WavesPortal() {
 
-	const contractAddress = '0x3FF82f4E995Cf9F4aB8058dC50285edBdB932A06';
+	const contractAddress = '0xCAc878561d8239471627B76F1E3b567266C92FFF';
 	const contractABI = abi.abi;
 
 	/*
@@ -36,7 +36,8 @@ export default function WavesPortal() {
       if (accounts.length !== 0) {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
-        setCurrentAccount(account)
+        setCurrentAccount(account);
+				getAllWaves();
       } else {
         console.log("No authorized account found")
       }
@@ -77,35 +78,31 @@ export default function WavesPortal() {
     checkIfWalletIsConnected();
   }, [])
 
-// we woud need to re-use this for the WAReport
-const wave = async () => {
+  const wave = async () => {
     try {
       const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
-
-
         const signer = provider.getSigner();
-//        const signer = ethereum.selectedAddress;
-				debugger;
-//				if (!signer._address){ console.error('signer has no address'); return };
-
-
-
         const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
-        /*
-        * Execute the actual wave from your smart contract
-        */
-        const waveTxn = await wavePortalContract.wave();
+				let message = document.querySelector('#message').value;
+				if(message.length === 0){
+					M.toast({html: 'A message is needed to complete the wave!', classes: 'red'});
+					return;
+				}
+				console.log(message);
+
+        const waveTxn = await wavePortalContract.wave(message);
         console.log("Mining...", waveTxn.hash);
 
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
-				debugger;
+
         count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
       } else {
@@ -116,10 +113,60 @@ const wave = async () => {
     }
   }
 
+
+  /*
+   * All state property to store all waves
+   */
+  const [allWaves, setAllWaves] = useState([]);
+
+  /*
+   * Create a method that gets all waves from your contract
+   */
+  const getAllWaves = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+
+        /*
+         * Call the getAllWaves method from your Smart Contract
+         */
+        const waves = await wavePortalContract.getAllWaves();
+
+
+        /*
+         * We only need address, timestamp, and message in our UI so let's
+         * pick those out
+         */
+        let wavesCleaned = [];
+        waves.forEach(wave => {
+          wavesCleaned.push({
+            address: wave.waver,
+            timestamp: new Date(wave.timestamp * 1000).toGMTString(),
+            message: wave.message
+          });
+        });
+
+        /*
+         * Store our data in React State
+         */
+        setAllWaves(wavesCleaned);
+      } else {
+        console.log("Ethereum object doesn't exist!")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
   return (
     <div className="mainContainer">
 
-      <div className="dataContainer">
+      <div className="container">
         <div className="header">
         👋 Hey there!
         </div>
@@ -128,22 +175,44 @@ const wave = async () => {
         I am Alejandro and my idea is to be able to give the community access to report portfolios that harm the ethereum ecosystem. If you like my idea for the builspace hackathon. Connect your Ethereum wallet and wave at me!
         </div>
 
-			{currentAccount && (
-        <button className="waveButton" onClick={wave}>
-          Wave at Me
-        </button>
-			)}
-		    {/*
-        * If there is no currentAccount render this button
-        */}
+				<input id="message"></input>
+
+				{currentAccount && (
+					<button className="waveButton" onClick={wave}>
+						Wave at Me
+					</button>
+				)}
+
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>
             Connect Wallet
           </button>
         )}
-
-
       </div>
+
+
+			<div id="data" class="container">
+					<h5>Recent Waves</h5>
+					<table class="striped highlight responsive-table">
+						<thead>
+							<tr>
+									<th>Date</th>
+									<th>Message</th>
+									<th>Address</th>
+							</tr>
+						</thead>
+						<tbody>
+						{allWaves.map((wave, index) => {
+						 return(
+							<tr key={index}>
+								<td class="truncate">{wave.timestamp.toString()}</td>
+								<td>{wave.message}</td>
+								<td class="truncate">{wave.address}</td>
+							</tr>)
+						})}
+						</tbody>
+					</table>
+				</div>
     </div>
   );
 }
