@@ -35,7 +35,7 @@ export default class Footer extends Component {
                 </div>
                 <div className="footer-copyright">
                     <div className="container">
-                        © 2021 DWEBCREW
+                        The Forgotten Kids @DWEBCREW
                         <a className="grey-text text-lighten-4 right" href="#!">
                             #BuildSpace
                         </a>
