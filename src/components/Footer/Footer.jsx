@@ -10,10 +10,15 @@ export default class Footer extends Component {
             <div className="page-footer blue-grey darken-4">
                 <div className="container">
                     <div className="row">
-                        <div className="col l6 s12">
+                        <div className="col l6 s12 block">
+                           <span>♜♞♝♛♚♝♞♜</span>
+                           <span>♟♟♟♟♟♟♟♟</span>
                             <h5 className="white-text">DWEBCREW</h5>
+                            <span>♙♙♙♙♙♙♙♙</span>
+                            <span>♖♘♗♕♔♗♘♖</span>
                             <p className="grey-text text-lighten-4">
-                                Letting the community participate and report [wallet address] from ethereum.
+
+
                             </p>
                         </div>
                         <div className="col l4 offset-l2 s12">
@@ -32,7 +37,7 @@ export default class Footer extends Component {
                     <div className="container">
                         © 2021 DWEBCREW
                         <a className="grey-text text-lighten-4 right" href="#!">
-                            #BuidSpace
+                            #BuildSpace
                         </a>
                     </div>
                 </div>
