@@ -32,3 +32,4 @@ typechain
 cache
 artifacts
 /contracts/backup.sol
+/scripts/sample-script.js
