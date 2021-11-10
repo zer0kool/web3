@@ -48,32 +48,51 @@ contract WalletReport {
 		uint256 _id = badWallets.length;
 		
 		totalReports += 1;
-		console.log("%s has reported!", msg.sender);
+		console.log("%s has reported!", msg.sender);	
 		
-		
-//		badWallets.push(Report(_id, block.timestamp, msg.sender, _reportedAddress, _nickname));
 		Report memory _newReporte = Report(_id, block.timestamp, _nickname, msg.sender, _reportedAddress);
-
 		badWallets.push(_newReporte);
 		reportsByAddress[msg.sender].push(_newReporte);
-//		reportsByAddress[msg.sender].push(Report(_id, _nickname, block.timestamp, msg.sender, _reportedAddress));
-
+		
 		emit NewReport(_id, block.timestamp, _nickname, msg.sender, _reportedAddress);
 	}
 
-
-
+	// get all reports 
 	function getAllReports() public view returns(Report[] memory) {
 		return badWallets;
 	}
 
-
-
+	// get the total number of reports 
 	function getTotalReports() public view returns(uint256) {
-		// Optional: Add this line if you want to see the contract print the value!
-		// We'll also print it over in run.js as well.
 		console.log("We have %d reported wallets!", totalReports);
 		return totalReports;
 	}
 
+	// get my reports 
+	function getMyReports() public view returns (Report[] memory) {
+    return getReportsByAddress(msg.sender);
+  }
+	
+	// get reports by address
+	function getReportsByAddress(address _agent)
+	public
+	view
+	returns(Report[] memory) {
+		console.log("Getting reports submitted by address %s.", _agent);
+		return reportsByAddress[_agent];
+	}
+	
+	// validates the report for bad wallet
+	function validateReport(uint256 _confirmation) public {
+		require(
+			!validationsForAddress[msg.sender][_confirmation],
+			"Can't validate the report you've already confirmed"
+		);
+
+		validations[_confirmation] += 1;
+		validationsForAddress[msg.sender][_confirmation] = true;
+
+		emit ValidateAddr(msg.sender, _confirmation, block.timestamp);
+	}
+	
 }
