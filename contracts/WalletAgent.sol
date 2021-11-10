@@ -9,7 +9,8 @@ contract WalletReport {
 
     event NewReport(
 			uint256 id,
-			uint256 timestamp, 
+			uint256 timestamp,
+			string nickname,
 			address indexed from, 
 			string reportedAddress
 		);
@@ -23,6 +24,7 @@ contract WalletReport {
 				uint256 id;
 			  uint256 timestamp; // The timestamp when the user reported the wallet.
         address agent; // The address of the user who reported the wallet.
+				string nickname; // The nickname for the agent 
         string reportedAddress; // The bad address the user sent.
     }
 
