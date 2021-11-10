@@ -49,7 +49,7 @@ contract WalletReport {
 	
 	
 	
-    function report(string memory _reportedAddress) public {
+    function report(string memory _reportedAddress, _nickname) public {
 				uint256 _id = badWallets.length;
         
 				totalReports += 1;
@@ -58,6 +58,7 @@ contract WalletReport {
 			  Report memory _newReport = Report(
 						_id,
 					  block.timestamp,
+						_nickname,
             msg.sender,
             _reportedAddress
         );
@@ -65,7 +66,7 @@ contract WalletReport {
         badWallets.push(_newReport);
 				reportsByAddress[msg.sender].push(_newReport);
 
-        emit NewReport(_id, block.timestamp, msg.sender, _reportedAddress);
+        emit NewReport(_id, block.timestamp, _nickname, msg.sender, _reportedAddress);
     }
 
 	
