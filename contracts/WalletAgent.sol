@@ -10,12 +10,12 @@ contract WalletReport {
 	event NewReport(
 		uint256 id,
 		uint256 timestamp,
-		//string nickname,
+		string nickname,
 		address indexed from,
 		string reportedAddress
 	);
 
-
+	
 	//Event emitted when an address validates a report
 	event ValidateAddr(address indexed agent, uint256 id, uint256 timestamp);
 
@@ -23,8 +23,8 @@ contract WalletReport {
 	struct Report {
 		uint256 id;
 		uint256 timestamp; // The timestamp when the user reported the wallet.
+		string nickname; // The nickname for the agent 
 		address agent; // The address of the user who reported the wallet.
-		//string nickname; // The nickname for the agent 
 		string reportedAddress; // The bad address the user sent.
 	}
 
@@ -44,21 +44,21 @@ contract WalletReport {
 	constructor() {console.log("Wallet Agent initialized");}
 
 	
-	function addReport(string memory _reportedAddress) public {
+	function addReport(string memory _reportedAddress, string memory _nickname) public {
 		uint256 _id = badWallets.length;
 		
 		totalReports += 1;
 		console.log("%s has reported!", msg.sender);
 		
 		
-//		badWallets.push(Report(_id, _nickname, block.timestamp, msg.sender, _reportedAddress));
-		Report memory _newReport = Report(_id, block.timestamp, msg.sender, _reportedAddress);
+//		badWallets.push(Report(_id, block.timestamp, msg.sender, _reportedAddress, _nickname));
+		Report memory _newReporte = Report(_id, block.timestamp, _nickname, msg.sender, _reportedAddress);
 
-		badWallets.push(_newReport);
-		reportsByAddress[msg.sender].push(_newReport);
+		badWallets.push(_newReporte);
+		reportsByAddress[msg.sender].push(_newReporte);
 //		reportsByAddress[msg.sender].push(Report(_id, _nickname, block.timestamp, msg.sender, _reportedAddress));
 
-		emit NewReport(_id, block.timestamp, msg.sender, _reportedAddress);
+		emit NewReport(_id, block.timestamp, _nickname, msg.sender, _reportedAddress);
 	}
 
 
