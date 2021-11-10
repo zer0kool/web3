@@ -50,7 +50,7 @@ contract WalletReport {
 	
 	
     function report(string memory _reportedAddress) public {
-				uint256 _id = badWallets.length
+				uint256 _id = badWallets.length;
         
 				totalReports += 1;
         console.log("%s has reported!", msg.sender);
