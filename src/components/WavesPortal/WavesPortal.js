@@ -9,7 +9,7 @@ import abi from './utils/WavePortal.json';
 
 export default function WavesPortal() {
 
-	const contractAddress = '0xCAc878561d8239471627B76F1E3b567266C92FFF';
+	const contractAddress = '0xe8dF7C21fB5E74e605178c39998c1Bc92D5abe66';
 	const contractABI = abi.abi;
 
 	/*
