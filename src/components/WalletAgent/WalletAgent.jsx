@@ -39,7 +39,7 @@ export default class WalletAgent extends Component {
 									<tbody>
 										{walletAgent.map( (report, index) =>
 										<tr>
-											<td>1</td>
+											<td>{report.id}</td>
 											<td>
 												<div className="blockReport">
 													<span><b>Name: </b>{report.agentName} <button className="tip btn-small">Tip Agent</button></span>
