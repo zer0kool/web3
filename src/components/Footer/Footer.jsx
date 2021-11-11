@@ -24,11 +24,10 @@ export default class Footer extends Component {
                         <div className="col l4 offset-l2 s12">
                             <h5 className="white-text">Resources</h5>
                             <ul className="footerLi">
-                                <li>
-                                    <a className="grey-text text-lighten-3" href="https://ethereum.org/en/">
-                                        Ethereum
-                                    </a>
-                                </li>
+                                <li><a className="grey-text text-lighten-3" href="https://ethereum.org/en/">Ethereum</a></li>
+                                <li><a className="grey-text text-lighten-3" href="https://www.alchemy.com/">Alchemy</a></li>
+                                <li><a className="grey-text text-lighten-3" href="https://vercel.com/">vercel</a></li>
+                                <li><a className="grey-text text-lighten-3" href="https://github.com/">GitHub</a></li>
                             </ul>
                         </div>
                     </div>
