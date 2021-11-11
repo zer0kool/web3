@@ -5,11 +5,11 @@ const main = async () => {
   console.log('Deploying contracts with account: ', deployer.address);
   console.log('Account balance: ', accountBalance.toString());
 
-  const Token = await hre.ethers.getContractFactory('WalletAgent');
+  const Token = await hre.ethers.getContractFactory('WalletReport');
   const portal = await Token.deploy();
   await portal.deployed();
 
-  console.log('WavePortal address: ', portal.address);
+  console.log('WalletReport address: ', portal.address);
 };
 
 const runMain = async () => {
