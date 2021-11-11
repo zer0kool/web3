@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Main.css";
 //import WavesPortal from '../WavesPortal/WavesPortal';
+import WalletAgent from '../WalletAgent/WalletAgent';
 
 
 export default class Main extends Component {
@@ -19,38 +20,8 @@ export default class Main extends Component {
 									</div>
               </div>
 							<div className="container">
-								<div id="data">
-								<h5>Top 10 Reported Wallets</h5>
-								<table className="striped highlight responsive-table">
-									<thead>
-										<tr>
-												<th>#</th>
-												<th>Agent</th>
-												<th>Report</th>
-										</tr>
-									</thead>
-
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>
-												<div className="blockReport">
-													<span><b>Name: </b>zer0kool <button className="tip btn-small">Tip Agent</button></span>
-													<span><b>Address: </b>0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266</span>
-												</div>
-											</td>
-											<td>
-												<div className="blockReport">
-													<span><b>Validation: </b>122545 confirmations</span>
-													<span><b>Address: </b>0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								</div>
+								<WalletAgent />
 						</div>
-
            </div>
         );
     }
