@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Main.css";
-import WavesPortal from '../WavesPortal/WavesPortal';
+//import WavesPortal from '../WavesPortal/WavesPortal';
 
 
 export default class Main extends Component {
@@ -50,7 +50,7 @@ export default class Main extends Component {
 								</table>
 								</div>
 						</div>
-          <WavesPortal/>
+
            </div>
         );
     }
