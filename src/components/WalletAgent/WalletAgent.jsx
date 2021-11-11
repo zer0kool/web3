@@ -60,7 +60,7 @@ export default class WalletAgent extends Component {
     }
 
     componentDidMount = async () =>{
-				const contractAddress = '0xe8dF7C21fB5E74e605178c39998c1Bc92D5abe66';
+				const contractAddress = '0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1';
 				const contractABI = abi.abi;
 
 				this.setState({ isLoading: true })
