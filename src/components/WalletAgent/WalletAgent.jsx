@@ -3,6 +3,8 @@ import { ethers } from "ethers";
 import M from "materialize-css";
 import abi from './utils/WalletAgent.json';
 import "./WalletAgent.css";
+import BuildReport from "./modules/BuildReport/BuildReport";
+
 
 export default class WalletAgent extends Component {
     constructor(props) {
@@ -10,6 +12,7 @@ export default class WalletAgent extends Component {
 
         this.state = {
             walletAgent: [],
+						contractAddress: "0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1",
             isLoading: false,
             error: null
         };
@@ -25,6 +28,7 @@ export default class WalletAgent extends Component {
 
         return (
             <div id="data">
+               <BuildReport />
                 <h5>Top 10 Reported Wallets</h5>
                  {fetching}
                 <table className="striped highlight responsive-table">
@@ -38,7 +42,7 @@ export default class WalletAgent extends Component {
 
 									<tbody>
 										{walletAgent.map( (report, index) =>
-										<tr>
+										<tr key={index}>
 											<td>{report.id}</td>
 											<td>
 												<div className="blockReport">
@@ -60,35 +64,29 @@ export default class WalletAgent extends Component {
     }
 
     componentDidMount = async () =>{
+				this.setState({ isLoading: true });
+
 				const contractAddress = '0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1';
 				const contractABI = abi.abi;
 
-				this.setState({ isLoading: true })
-        let self = this
+        let self = this;
         let dataParsed = [];
-
-
-// 				const getAllReports = async () => {
 					try {
 						const { ethereum } = window;
 						if (ethereum) {
-//							const provider = new ethers.providers.Web3Provider(ethereum);
-//							const signer = provider.getSigner();
-//							const walletAgentContract = new ethers.Contract(contractAddress, contractABI, signer);
-//							const reports = await walletAgentContract.getAllreports();
-//							reports.forEach(report => {
-//								dataParsed.push({id:report.id, timestamp: new Date(report.timestamp * 1000).toGMTString(), agentName: report.nickname, angentAddress: report.agent, badAddress: report.reportedAddress })
-//							});
-							dataParsed.push({id:"1", date: "10.11.2021", agentName: "zer0kool", angentAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", badAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"})
-							dataParsed.push({id:"1", date: "10.11.2021", agentName: "zer0kool", angentAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", badAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"})
-							dataParsed.push({id:"1", date: "10.11.2021", agentName: "zer0kool", angentAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", badAddress: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"})
+							const provider = new ethers.providers.Web3Provider(ethereum);
+							const signer = provider.getSigner();
+							const walletAgentContract = new ethers.Contract(contractAddress, contractABI, signer);
+							const reports = await walletAgentContract.getAllReports();
+							reports.forEach(report => {
+								dataParsed.push({id:parseInt(report.id), timestamp: new Date(report.timestamp * 1000).toGMTString(), agentName: report.nickname, angentAddress: report.agent, badAddress: report.reportedAddress })
+							});
 						}
 
+						console.log(dataParsed)
 					}catch(error) {console.log(`Error inside the parsing function: ${error}`)}
-//    	}
-			console.log(dataParsed)
+
 			self.setState({ walletAgent: dataParsed, isLoading: false })
-
-
+			console.log("Contract: " + this.state.contractAddress)
 		}
 }
