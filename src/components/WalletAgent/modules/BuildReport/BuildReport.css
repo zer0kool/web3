@@ -13,9 +13,19 @@ button.tip.btn-small.modal-trigger {
 
 .status {
     display: grid;
-    border-left: 3px solid #26a69a;
+    border-left: 3px solid #667281;
     padding: 10px;
     border-radius: 4px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.status.error {
+    border-left: 3px solid #a14942;
+}
+.status.mining {
+    border-left: 3px solid #008acd;
+}
+.status.success {
+    border-left: 3px solid #27952b;
 }

@@ -24,20 +24,20 @@ debugger;
 
  			const reportTxn = await walletAgentContract.addReport(addr, agentName);
  			console.log("Mining...", reportTxn.hash);
-			let template = `<div class="status">
+			let template = `<div class="status mining">
 											<span class="name">status: report builded</span>
 											<span class="sender">0x000</span>
 											<span class="report">0xDEAD</span></div>`;
-			document.querySelector('.logs').insertAdjacentHTML("beforeend", template);
+			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template);
 
 
  			await reportTxn.wait();
 			console.log("Mined -- ", reportTxn.hash);
-			let template1 = `<div class="status">
+			let template1 = `<div class="status success">
 											<span class="name">status: Report sent</span>
 											<span class="sender">0x000</span>
 											<span class="report">0xDEAD</span></div>`;
-			document.querySelector('.logs').insertAdjacentHTML("beforeend", template1);
+			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template1);
 
  		}
 
@@ -46,7 +46,7 @@ debugger;
 			let metaMessage = `<div class="status">
 											<span class="sender">ERROR</span>
 											<span class="name">${error.message}</span>`;
-			document.querySelector('.logs').insertAdjacentHTML("beforeend", metaMessage);
+			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", metaMessage);
  	}
  }
 

@@ -6,6 +6,35 @@ import "./WalletAgent.css";
 import BuildReport from "./modules/BuildReport/BuildReport";
 import Loading from "../Loading/Loading";
 import MetaMask from "../MetaMask/MetaMask";
+import ValidateReport from "./modules/ValidateReport/ValidateReport";
+
+
+function validateForm(e){
+//	debugger;
+	let id = e.target.dataset.id;
+	let report = document.querySelector(`#report${id}`);
+	let reportData = {
+		id: id,
+		name: report.querySelector('#agentName').innerText,
+		addr: report.querySelector('#agentAddr').innerText,
+		badAddr: report.querySelector('#badAddr').innerText,
+
+	}
+
+	let reviewTemplate = `<div class="review">
+											<span><i class="material-icons">bug_report</i><b>Report ID: </b>${reportData.id}</span>
+											<span><i class="material-icons">face</i><b>Agent's Name: </b>${reportData.name}</span>
+											<span><i class="material-icons">security</i><b>Agent Address: </b>${reportData.addr}</span>
+											<span><i class="material-icons">fingerprint</i><b>Reported Address: </b>${reportData.badAddr}</span>
+												</div>
+											`;
+	document.querySelector('#ValidateReport .reportBlock .reviewData').innerHTML = reviewTemplate;
+
+
+	console.log(reportData);
+		var elem = document.querySelector('#validateModal');
+    M.Modal.getInstance(elem).open();
+}
 
 export default class WalletAgent extends Component {
 
@@ -22,7 +51,7 @@ export default class WalletAgent extends Component {
 
     render() {
 
-        const { walletAgent, isLoading, error } = this.state;
+        const { walletAgent, isLoading, error} = this.state;
 
         if ( !walletAgent ){ return <p className="black-text"> No Wallet Reports...</p>;}
         if ( isLoading ){var fetching = <Loading />;}
@@ -31,7 +60,8 @@ export default class WalletAgent extends Component {
         return (
             <div id="data">
               <MetaMask/>
-               <BuildReport />
+               <BuildReport/>
+               <ValidateReport/>
                 <h5>Top 10 Reported Wallets</h5>
                 <div className="loader">
                 	{fetching}
@@ -46,18 +76,18 @@ export default class WalletAgent extends Component {
 									</thead>
 									<tbody>
 										{walletAgent.map( (report, index) =>
-										<tr key={index}>
-											<td>{report.id}</td>
+										<tr id={"report"+report.id} key={index}>
+											<td id="reportID">{report.id}</td>
 											<td>
 												<div className="blockReport">
-													<span><b>Name: </b>{report.agentName} <button className="tip btn-small">Tip Agent</button></span>
-													<span><b>Address: </b>{report.angentAddress}</span>
+													<span><b>Name: </b><span id="agentName">{report.agentName}</span> <button id="tip" className="tip btn-small">Tip Agent</button></span>
+													<span><b>Address: </b><span id="agentAddr">{report.angentAddress}</span></span>
 												</div>
 											</td>
 											<td>
 												<div className="blockReport">
-													<span><b>Validation: </b>122545 confirmations</span>
-													<span><b>Address: </b>{report.badAddress}</span>
+													<span><b>Validation: </b>122545 confirmations <button id="validate" data-id={report.id} onClick={validateForm} className="tip btn-small">Validate</button></span>
+													<span><b>Address: </b><span id="badAddr">{report.badAddress}</span></span>
 												</div>
 											</td>
 										</tr>)}

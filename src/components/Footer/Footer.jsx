@@ -8,7 +8,7 @@ export default class Footer extends Component {
         return (
 					<footer>
             <div className="page-footer blue-grey darken-4">
-                <div className="container">
+                <div className="container hide">
                     <div className="row">
                         <div className="col l6 s12 block">
                            <span>♜♞♝♛♚♝♞♜</span>

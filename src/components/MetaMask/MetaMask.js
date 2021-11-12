@@ -57,12 +57,12 @@ export default function MetaMask() {
         return;
       }
 
-			// get rid of .then
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
+			window.location.reload(true);
     } catch (error) {
       console.log(error)
     }
@@ -77,7 +77,7 @@ export default function MetaMask() {
   }, [])
 
 	return(
-  <div id="meta" class="modal open">
+  <div id="meta" class="modal modal-fixed-footer open">
     <div class="modal-content">
       <img src="https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2020/01/metamask-ethereum-online-wallet-logo-750x469.png"/>
 		<h4>Welcome to the Web3!</h4>
