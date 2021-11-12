@@ -1,0 +1,11 @@
+#meta{
+	color: #151c25;
+}
+#meta h4 {
+    margin-top: 50px;
+}
+img {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	margin: -24px;
+}
