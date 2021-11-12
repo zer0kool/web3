@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import './WavesPortal.css';
 import M from "materialize-css";
-
+import MetaMask from "../MetaMask/MetaMask";
 //contract
 import abi from './utils/WavePortal.json';
 
@@ -165,7 +165,7 @@ export default function WavesPortal() {
 
   return (
     <div className="mainContainer">
-
+			<MetaMask/>
       <div className="container">
         <div className="header">
         👋 Hey there!

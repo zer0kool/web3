@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Explore.css";
-
+import MetaMask from "../MetaMask/MetaMask";
 
 
 export default class Explore extends Component {
@@ -19,7 +19,7 @@ export default class Explore extends Component {
 									</div>
               </div>
 							<div className="container">
-
+								<MetaMask/>
 						</div>
            </div>
         );

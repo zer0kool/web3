@@ -5,9 +5,10 @@ import abi from './utils/WalletAgent.json';
 import "./WalletAgent.css";
 import BuildReport from "./modules/BuildReport/BuildReport";
 import Loading from "../Loading/Loading";
-
+import MetaMask from "../MetaMask/MetaMask";
 
 export default class WalletAgent extends Component {
+
     constructor(props) {
         super(props);
 
@@ -29,6 +30,7 @@ export default class WalletAgent extends Component {
 
         return (
             <div id="data">
+              <MetaMask/>
                <BuildReport />
                 <h5>Top 10 Reported Wallets</h5>
                 <div className="loader">
@@ -67,7 +69,7 @@ export default class WalletAgent extends Component {
 
     componentDidMount = async () =>{
 				this.setState({ isLoading: true });
-
+//				MetaMask();
 				const contractAddress = '0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1';
 				const contractABI = abi.abi;
 

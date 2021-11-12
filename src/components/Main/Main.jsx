@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Main.css";
 //import WavesPortal from '../WavesPortal/WavesPortal';
 import WalletAgent from '../WalletAgent/WalletAgent';
+import MetaMask from '../MetaMask/MetaMask';
 
 
 export default class Main extends Component {
