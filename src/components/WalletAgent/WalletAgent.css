@@ -1,1 +1,4 @@
 .loader {height: 10px}
+span{
+	display: block ruby;
+}

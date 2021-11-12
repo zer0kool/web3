@@ -88,7 +88,7 @@ span.search {
 }
 
 tbody tr:hover {
-	background-color: #e1aa4c26!important;
+	background-color: #e1aa4c26 !important;
 }
 
 table.striped.highlight {
@@ -113,12 +113,28 @@ td:nth-child(1) {
 	color: #354559;
 	font-weight: 500;
 }
+
 button.tip.btn-small {
-    height: 16px;
-    font-size: 10px;
-    line-height: 0;
-    background-color: #576677;
-    width: 70px;
-    padding: 0;
-    margin: 4px;
+	height: 24px;
+	font-size: 10px;
+	line-height: 0;
+	background-color: #576677;
+	width: 80px;
+	padding: 0;
+	margin: 4px;
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	line-height: normal;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }

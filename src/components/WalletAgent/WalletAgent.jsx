@@ -22,7 +22,7 @@ function validateForm(e){
 	}
 
 	let reviewTemplate = `<div class="review">
-											<span><i class="material-icons">bug_report</i><b>Report ID: </b>${reportData.id}</span>
+											<span><i class="material-icons">bug_report</i><b>Report ID: </b>${"0xDWC"+reportData.id}</span>
 											<span><i class="material-icons">face</i><b>Agent's Name: </b>${reportData.name}</span>
 											<span><i class="material-icons">security</i><b>Agent Address: </b>${reportData.addr}</span>
 											<span><i class="material-icons">fingerprint</i><b>Reported Address: </b>${reportData.badAddr}</span>
@@ -77,16 +77,16 @@ export default class WalletAgent extends Component {
 									<tbody>
 										{walletAgent.map( (report, index) =>
 										<tr id={"report"+report.id} key={index}>
-											<td id="reportID">{report.id}</td>
+											<td id="reportID">{index + 1}</td>
 											<td>
 												<div className="blockReport">
-													<span><b>Name: </b><span id="agentName">{report.agentName}</span> <button id="tip" className="tip btn-small">Tip Agent</button></span>
+													<span><b>Name: </b><span id="agentName">{report.agentName}</span> <button id="tip" className="tip btn-small right"><i class="tiny material-icons">loyalty</i>Tip Agent</button></span>
 													<span><b>Address: </b><span id="agentAddr">{report.angentAddress}</span></span>
 												</div>
 											</td>
 											<td>
 												<div className="blockReport">
-													<span><b>Validation: </b>122545 confirmations <button id="validate" data-id={report.id} onClick={validateForm} className="tip btn-small">Validate</button></span>
+													<span><b>Validation: </b>122545 confirmations <button id="validate" data-id={report.id} onClick={validateForm} className="tip btn-small right"><i class="tiny material-icons">verified_user</i>Validate</button></span>
 													<span><b>Address: </b><span id="badAddr">{report.badAddress}</span></span>
 												</div>
 											</td>

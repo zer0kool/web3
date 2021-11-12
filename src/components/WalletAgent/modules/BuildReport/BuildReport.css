@@ -1,31 +1,49 @@
 /*build report form css*/
-.modal-overlay{
-	background: #000000c9!important;
+.modal-overlay {
+	background: #000000c9 !important;
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
-	opacity: 0.7!important;
-}
-button.tip.btn-small.modal-trigger {
-  width: 100px;
-	float: right;
-	height: 30px;
+	opacity: 0.7 !important;
 }
 
+button.tip.btn-small.modal-trigger {
+	width: 100px;
+	float: right;
+	height: 30px;
+	background-color: #354559;
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	line-height: normal;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+
 .status {
-    display: grid;
-    border-left: 3px solid #667281;
-    padding: 10px;
-    border-radius: 4px;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+	display: grid;
+	border-left: 3px solid #667281;
+	padding: 10px;
+	border-radius: 4px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .status.error {
-    border-left: 3px solid #a14942;
+	border-left: 3px solid #a14942;
 }
+
 .status.mining {
-    border-left: 3px solid #008acd;
+	border-left: 3px solid #008acd;
 }
+
 .status.success {
-    border-left: 3px solid #27952b;
+	border-left: 3px solid #27952b;
 }
