@@ -4,6 +4,7 @@ import M from "materialize-css";
 import abi from './utils/WalletAgent.json';
 import "./WalletAgent.css";
 import BuildReport from "./modules/BuildReport/BuildReport";
+import Loading from "../Loading/Loading";
 
 
 export default class WalletAgent extends Component {
@@ -23,14 +24,16 @@ export default class WalletAgent extends Component {
         const { walletAgent, isLoading, error } = this.state;
 
         if ( !walletAgent ){ return <p className="black-text"> No Wallet Reports...</p>;}
-        if ( isLoading ){var fetching = <p className="black-text"> Loading Wallet Reports...</p>;}
+        if ( isLoading ){var fetching = <Loading />;}
         if ( error ){ return <p className="black-text"> {error.message} </p>;}
 
         return (
             <div id="data">
                <BuildReport />
                 <h5>Top 10 Reported Wallets</h5>
-                 {fetching}
+                <div className="loader">
+                	{fetching}
+                </div>
                 <table className="striped highlight responsive-table">
 									<thead>
 										<tr>
@@ -39,7 +42,6 @@ export default class WalletAgent extends Component {
 												<th>Report</th>
 										</tr>
 									</thead>
-
 									<tbody>
 										{walletAgent.map( (report, index) =>
 										<tr key={index}>
