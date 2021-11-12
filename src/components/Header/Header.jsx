@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {Link} from "react-router-dom";
 
 //CSS
 import "./Header.css";
@@ -14,12 +14,10 @@ export default class Header extends Component {
       <div className="Header">
           <nav>
             <div className="nav-wrapper blue-grey darken-4">
-               <a href="/" className="brand-logo"><i className="material-icons">fingerprint</i>DWEBCREW</a>
-								<ul className="right hide-on-med-and-down">
-									<li><a href="/wave"><i className="material-icons">search</i></a></li>
-									<li><a href="#"><i className="material-icons">view_module</i></a></li>
-									<li><a href="#"><i className="material-icons">refresh</i></a></li>
-									<li><a href="#"><i className="material-icons">more_vert</i></a></li>
+               <a href="/" className="left brand-logo"><i className="material-icons">fingerprint</i>DWEBCREW</a>
+								<ul className="right">
+									<li><a href="/wave"><i className="material-icons">face</i></a></li>
+									<li><a href="/explore"><i className="material-icons">view_module</i></a></li>
 								</ul>
             </div>
           </nav>

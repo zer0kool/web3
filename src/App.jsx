@@ -13,6 +13,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
 import WavesPortal from './components/WavesPortal/WavesPortal';
+import Explore from './components/Explore/Explore';
 
 
 
@@ -26,6 +27,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Main/>} />
                     <Route path="/wave" element={<WavesPortal/>} />
+                    <Route path="/explore" element={<Explore/>} />
                 </Routes>
             </main>
             <Footer />
