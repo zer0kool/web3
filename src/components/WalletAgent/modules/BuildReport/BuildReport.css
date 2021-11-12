@@ -1,1 +1,11 @@
 /*build report form css*/
+.modal-overlay{
+	background: #000000c9!important;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	opacity: 0.7!important;
+}
+button.tip.btn-small.modal-trigger {
+    width: 100px;
+	float: right;
+}
