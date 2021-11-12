@@ -6,6 +6,16 @@
 	opacity: 0.7!important;
 }
 button.tip.btn-small.modal-trigger {
-    width: 100px;
+  width: 100px;
 	float: right;
+	height: 30px;
+}
+
+.status {
+    display: grid;
+    border-left: 3px solid #26a69a;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }

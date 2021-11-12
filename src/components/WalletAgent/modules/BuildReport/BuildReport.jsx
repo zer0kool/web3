@@ -6,6 +6,7 @@ import "./BuildReport.css";
 
 
 const sendReport = async () => {
+
 	const contractAddress = '0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1';
 	const contractABI = abi.abi;
  	try {
@@ -14,7 +15,7 @@ const sendReport = async () => {
  			const provider = new ethers.providers.Web3Provider(ethereum);
  			const signer = provider.getSigner();
  			const walletAgentContract = new ethers.Contract(contractAddress, contractABI, signer);
-// 			const reports = await walletAgentContract.getAllreports();
+debugger;
 
  			let agentName = document.querySelector('#agentName').value;
  			let addr = document.querySelector('#badWallet').value;
@@ -23,15 +24,29 @@ const sendReport = async () => {
 
  			const reportTxn = await walletAgentContract.addReport(addr, agentName);
  			console.log("Mining...", reportTxn.hash);
+			let template = `<div class="status">
+											<span class="name">status: report builded</span>
+											<span class="sender">0x000</span>
+											<span class="report">0xDEAD</span></div>`;
+			document.querySelector('.logs').insertAdjacentHTML("beforeend", template);
+
 
  			await reportTxn.wait();
- 			console.log("Mined -- ", reportTxn.hash);
-
+			console.log("Mined -- ", reportTxn.hash);
+			let template1 = `<div class="status">
+											<span class="name">status: Report sent</span>
+											<span class="sender">0x000</span>
+											<span class="report">0xDEAD</span></div>`;
+			document.querySelector('.logs').insertAdjacentHTML("beforeend", template1);
 
  		}
 
  	} catch (error) {
- 		console.log(`Error inside the parsing function: ${error}`)
+ 		  console.log(`Error inside the parsing function: ${error}`)
+			let metaMessage = `<div class="status">
+											<span class="sender">ERROR</span>
+											<span class="name">${error.message}</span>`;
+			document.querySelector('.logs').insertAdjacentHTML("beforeend", metaMessage);
  	}
  }
 
@@ -41,6 +56,7 @@ export default class BuildReport extends Component {
 
         this.state = {
             walletReport: [],
+						log: '',
             isLoading: false,
             error: null
         };
@@ -48,10 +64,11 @@ export default class BuildReport extends Component {
 
 
     render() {
-        const { walletAgent, isLoading, error} = this.state;
+        const { walletAgent, isLoading, error, log} = this.state;
 
 //        if ( !walletAgent ){ return <p className="black-text"> No Wallet Reports...</p>;}
         if ( isLoading ){var fetching = <p className="black-text"> Loading Wallet Reports...</p>;}
+        if ( log ){ return <p className="black-text"> {log.message} </p>;}
         if ( error ){ return <p className="black-text"> {error.message} </p>;}
 
         return (
@@ -73,6 +90,9 @@ export default class BuildReport extends Component {
 													<input placeholder="abusive wallet" id="badWallet" type="text" className="validate"></input>
 													<label htmlFor="badWallet">Enter the bad wallet</label>
 												</div>
+											</div>
+											<div className="logs">
+
 											</div>
 										</div>
 									</div>
