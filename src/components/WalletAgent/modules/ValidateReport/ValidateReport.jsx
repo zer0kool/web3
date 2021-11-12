@@ -34,15 +34,16 @@ const confirmation = async () => {
 											<span class="name">status: Report sent</span>
 											<span class="sender">0x000</span>
 											<span class="report">0xDEAD</span></div>`;
-			document.querySelector('#ValidateReport logs').insertAdjacentHTML("beforeend", template1);
+			document.querySelector('#ValidateReport .logs').insertAdjacentHTML("beforeend", template1);
 
  		}
 
  	} catch (error) {
- 		  console.log(`Error inside the parsing function: ${error}`)
+		debugger;
+ 		  console.log(`Error inside the parsing function: ${error.error.message ?? error}`)
 			let metaMessage = `<div class="status error">
 											<span class="sender">ERROR</span>
-											<span class="name">${error.message}</span>`;
+											<span class="name">${error.error.message ?? error.message}</span>`;
 			document.querySelector('#ValidateReport .logs').insertAdjacentHTML("beforeend", metaMessage);
  	}
  }

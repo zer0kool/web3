@@ -26,6 +26,9 @@ button.tip.btn-small.modal-trigger {
 	align-items: center;
 }
 
+.logs {
+    margin: 30px 10px;
+}
 
 .status {
 	display: grid;

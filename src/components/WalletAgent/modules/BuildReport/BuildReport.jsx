@@ -43,7 +43,7 @@ debugger;
 
  	} catch (error) {
  		  console.log(`Error inside the parsing function: ${error}`)
-			let metaMessage = `<div class="status">
+			let metaMessage = `<div class="status error">
 											<span class="sender">ERROR</span>
 											<span class="name">${error.message}</span>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", metaMessage);

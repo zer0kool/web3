@@ -22,10 +22,10 @@ function validateForm(e){
 	}
 
 	let reviewTemplate = `<div class="review">
-											<span><i class="material-icons">bug_report</i><b>Report ID: </b>${"0xDWC"+reportData.id}</span>
+											<span><i class="material-icons">fingerprint</i><b>Report ID: </b>${"0xDWC"+reportData.id}</span>
 											<span><i class="material-icons">face</i><b>Agent's Name: </b>${reportData.name}</span>
 											<span><i class="material-icons">security</i><b>Agent Address: </b>${reportData.addr}</span>
-											<span><i class="material-icons">fingerprint</i><b>Reported Address: </b>${reportData.badAddr}</span>
+											<span><i class="material-icons">bug_report</i><b>Reported Address: </b>${reportData.badAddr}</span>
 												</div>
 											`;
 	document.querySelector('#ValidateReport .reportBlock .reviewData').innerHTML = reviewTemplate;
