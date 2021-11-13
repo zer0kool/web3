@@ -23,17 +23,16 @@ const confirmation = async () => {
 			// Mining the block
  			const reportTxn = await walletAgentContract.validateReport(reportID);
 			let template = `<div class="status mining">
-											<span class="name">status: report builded</span>
-											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="name">We are mining the block</span>
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#ValidateReport .logs').insertAdjacentHTML("beforeend", template);
 
 			// The block has been mined
  			await reportTxn.wait();
 			let template1 = `<div class="status success">
-											<span class="name">status: Report sent</span>
-											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="name">Validation for report submited</span>
+											<span class="sender"><a href="https://rinkeby.etherscan.io/address/${reportTxn.hash}">View Transaction Details</a></span>
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#ValidateReport .logs').insertAdjacentHTML("beforeend", template1);
 
  		}

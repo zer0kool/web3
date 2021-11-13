@@ -25,8 +25,7 @@ debugger;
  			const reportTxn = await walletAgentContract.addReport(addr, agentName);
  			console.log("Mining...", reportTxn.hash);
 			let template = `<div class="status mining">
-											<span class="name">status: report builded</span>
-											<span class="sender">0x000</span>
+											<span class="name">We are mining the block</span>
 											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template);
 
@@ -34,8 +33,8 @@ debugger;
  			await reportTxn.wait();
 			console.log("Mined -- ", reportTxn.hash);
 			let template1 = `<div class="status success">
-											<span class="name">status: Report sent</span>
-											<span class="sender">0x000</span>
+											<span class="name">Report has been submitted</span>
+											<span class="sender"><a href="https://rinkeby.etherscan.io/address/${reportTxn.hash}">View Transaction Details</a></span>
 											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template1);
 

@@ -35,8 +35,7 @@ const sendWave = async () => {
 
 			console.log("Mining...", reportTxn.hash);
 			let template = `<div class="status mining">
-											<span class="name"></span>
-											<span class="sender">0x000</span>
+											<span class="name">We are mining the block</span>
 											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildWave .logs').insertAdjacentHTML("beforeend", template);
 
@@ -44,11 +43,13 @@ const sendWave = async () => {
  			await reportTxn.wait();
 			console.log("Mined -- ", reportTxn.hash);
 			let template1 = `<div class="status success">
-											<span class="name">Report has been submited</span>
-											<span class="sender">0x000</span>
+											<span class="name">Wave has been submited</span>
+											<span class="sender"><a href="https://rinkeby.etherscan.io/address/${reportTxn.hash}">View Transaction Details</a></span>
 											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildWave .logs').insertAdjacentHTML("beforeend", template1);
 
+			// finish by reloading
+			window.location.reload(true);
  		}
 
  	} catch (error) {
