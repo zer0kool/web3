@@ -159,9 +159,7 @@ export default function WavesPortal() {
         )}
       </div>
 
-
-			<div id="data" class="container">
-					<h5>Recent Waves</h5>
+			<div id="waves">
 
 						{allWaves.map((wave, index) => {
 						 return(
