@@ -9,7 +9,7 @@ import BuildWave from './modules/Wave';
 
 export default function WavesPortal() {
 
-	const contractAddress = '0xe8dF7C21fB5E74e605178c39998c1Bc92D5abe66';
+	const contractAddress = '0xbbb56565084f95c168885FB09725C5375b1511Fe';
 	const contractABI = abi.abi;
 
 	/*

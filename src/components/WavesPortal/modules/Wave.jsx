@@ -10,7 +10,7 @@ import * as style from '@dicebear/avatars-bottts-sprites';
 
 const sendWave = async () => {
 
-	const contractAddress = '0xD76C4D8A0E787B4863d8C988adABF5C17eC50Fd1';
+	const contractAddress = '0xbbb56565084f95c168885FB09725C5375b1511Fe';
 	const contractABI = abi.abi;
  	try {
  		const {ethereum} = window;
