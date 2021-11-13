@@ -4,8 +4,8 @@ import { ethers } from "ethers";
 import './WavesPortal.css';
 import M from "materialize-css";
 import MetaMask from "../MetaMask/MetaMask";
-//contract
 import abi from './utils/WavePortal.json';
+import BuildWave from './modules/Wave';
 
 export default function WavesPortal() {
 
@@ -59,7 +59,6 @@ export default function WavesPortal() {
         return;
       }
 
-			// get rid of .then
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
 
@@ -77,41 +76,6 @@ export default function WavesPortal() {
   useEffect(() => {
     checkIfWalletIsConnected();
   }, [])
-
-  const wave = async () => {
-    try {
-      const { ethereum } = window;
-
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
-
-        let count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave count...", count.toNumber());
-
-				let message = document.querySelector('#message').value;
-				if(message.length === 0){
-					M.toast({html: 'A message is needed to complete the wave!', classes: 'red'});
-					return;
-				}
-				console.log(message);
-
-        const waveTxn = await wavePortalContract.wave(message);
-        console.log("Mining...", waveTxn.hash);
-
-        await waveTxn.wait();
-        console.log("Mined -- ", waveTxn.hash);
-
-        count = await wavePortalContract.getTotalWaves();
-        console.log("Retrieved total wave count...", count.toNumber());
-      } else {
-        console.log("Ethereum object doesn't exist!");
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
   /*
@@ -166,19 +130,17 @@ export default function WavesPortal() {
   return (
     <div className="mainContainer">
 			<MetaMask/>
+			<BuildWave/>
       <div className="container">
         <div className="header">
         👋 Hey there!
         </div>
-
         <div className="bio">
         I am Alejandro and my idea is to be able to give the community access to report portfolios that harm the ethereum ecosystem. If you like my idea for the builspace hackathon. Connect your Ethereum wallet and wave at me!
         </div>
 
-				<input id="message"></input>
-
 				{currentAccount && (
-					<button className="waveButton" onClick={wave}>
+					<button className="tip btn-small modal-trigger" href="#waveForm">
 						Wave at Me
 					</button>
 				)}
