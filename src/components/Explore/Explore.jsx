@@ -20,6 +20,7 @@ export default class Explore extends Component {
               </div>
 							<div className="container">
 								<MetaMask/>
+								<h5> Explore section comming soon! </h5>
 						</div>
            </div>
         );
