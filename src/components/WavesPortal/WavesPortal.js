@@ -6,6 +6,8 @@ import M from "materialize-css";
 import MetaMask from "../MetaMask/MetaMask";
 import abi from './utils/WavePortal.json';
 import BuildWave from './modules/Wave';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-bottts-sprites';
 
 export default function WavesPortal() {
 
@@ -106,12 +108,17 @@ export default function WavesPortal() {
          */
         let wavesCleaned = [];
         waves.forEach(wave => {
+					var agent = createAvatar(style, {seed: wave.waver,});
           wavesCleaned.push({
             address: wave.waver,
             timestamp: new Date(wave.timestamp * 1000).toGMTString(),
-            message: wave.message
+            message: wave.message,
+						name: wave.nickname,
+						avatar: agent
           });
         });
+
+				console.log(wavesCleaned)
 
         /*
          * Store our data in React State
@@ -155,25 +162,40 @@ export default function WavesPortal() {
 
 			<div id="data" class="container">
 					<h5>Recent Waves</h5>
-					<table class="striped highlight responsive-table">
-						<thead>
-							<tr>
-									<th>Date</th>
-									<th>Message</th>
-									<th>Address</th>
-							</tr>
-						</thead>
-						<tbody>
+
 						{allWaves.map((wave, index) => {
 						 return(
-							<tr key={index}>
-								<td class="truncate">{wave.timestamp.toString()}</td>
-								<td>{wave.message}</td>
-								<td class="truncate">{wave.address}</td>
-							</tr>)
+							  <div key={index} class="card">
+								<div class="additional">
+									<div class="user-card">
+							 			<div dangerouslySetInnerHTML={{ __html:wave.avatar }}></div>
+							 			<h5>AGENT</h5>
+									</div>
+									<div class="more-info">
+										<h1>{wave.name}</h1>
+										<div class="coords">
+											<span>Date</span>
+											<span>{wave.timestamp.toString()} </span>
+										</div>
+										<div class="coords">
+											<span>Address</span>
+											<span>{wave.address}</span>
+										</div>
+										<div class="stats">
+
+										</div>
+									</div>
+								</div>
+								<div class="general">
+									<h1>{wave.name}</h1>
+									<p>{wave.message}</p>
+									<span class="more">Mouse over the card for more info</span>
+								</div>
+							</div>
+
+						)
 						})}
-						</tbody>
-					</table>
+
 				</div>
     </div>
   );
