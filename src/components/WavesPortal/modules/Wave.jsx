@@ -31,7 +31,7 @@ const sendWave = async () => {
 			document.querySelector('#BuildWave #botname').innerHTML = botname;
 
 
- 			const reportTxn = await waveDataContract.addReport(message, agentName);
+ 			const reportTxn = await waveDataContract.wave(message, agentName);
 
 			console.log("Mining...", reportTxn.hash);
 			let template = `<div class="status mining">
