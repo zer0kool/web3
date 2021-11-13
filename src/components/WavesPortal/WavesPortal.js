@@ -165,34 +165,22 @@ export default function WavesPortal() {
 
 						{allWaves.map((wave, index) => {
 						 return(
-							  <div key={index} class="card">
-								<div class="additional">
-									<div class="user-card">
-							 			<div dangerouslySetInnerHTML={{ __html:wave.avatar }}></div>
-							 			<h5>AGENT</h5>
-									</div>
-									<div class="more-info">
-										<h1>{wave.name}</h1>
-										<div class="coords">
-											<span>Date</span>
-											<span>{wave.timestamp.toString()} </span>
-										</div>
-										<div class="coords">
-											<span>Address</span>
-											<span>{wave.address}</span>
-										</div>
-										<div class="stats">
 
-										</div>
+
+							   <div key={index}  class="card">
+									<div class="card-image waves-effect waves-block waves-light">
+							     <picture class="activator" dangerouslySetInnerHTML={{ __html:wave.avatar }}/>
+									</div>
+									<div class="card-content">
+										<span class="card-title activator grey-text text-darken-4">{wave.name}<i class="material-icons right">more_vert</i></span>
+										<p><a className="AgentID" href="#">{wave.address}</a></p>
+									</div>
+									<div class="card-reveal">
+										<span class="card-title grey-white">Message<i class="material-icons right">close</i></span>
+										<p className="message">{wave.message}</p>
+							 			<span className="date">{wave.timestamp.toString()} </span>
 									</div>
 								</div>
-								<div class="general">
-									<h1>{wave.name}</h1>
-									<p>{wave.message}</p>
-									<span class="more">Mouse over the card for more info</span>
-								</div>
-							</div>
-
 						)
 						})}
 
