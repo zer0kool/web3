@@ -35,18 +35,18 @@ const sendWave = async () => {
 
 			console.log("Mining...", reportTxn.hash);
 			let template = `<div class="status mining">
-											<span class="name">status: report builded</span>
+											<span class="name"></span>
 											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildWave .logs').insertAdjacentHTML("beforeend", template);
 
 
  			await reportTxn.wait();
 			console.log("Mined -- ", reportTxn.hash);
 			let template1 = `<div class="status success">
-											<span class="name">status: Report sent</span>
+											<span class="name">Report has been submited</span>
 											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildWave .logs').insertAdjacentHTML("beforeend", template1);
 
  		}

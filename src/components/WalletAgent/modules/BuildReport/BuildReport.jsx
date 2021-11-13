@@ -27,7 +27,7 @@ debugger;
 			let template = `<div class="status mining">
 											<span class="name">status: report builded</span>
 											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template);
 
 
@@ -36,7 +36,7 @@ debugger;
 			let template1 = `<div class="status success">
 											<span class="name">status: Report sent</span>
 											<span class="sender">0x000</span>
-											<span class="report">0xDEAD</span></div>`;
+											<span class="report">${reportTxn.hash}</span></div>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", template1);
 
  		}
