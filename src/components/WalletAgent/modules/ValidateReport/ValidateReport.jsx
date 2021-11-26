@@ -4,7 +4,8 @@ import M from "materialize-css";
 import abi from '../../utils/WalletAgent.json';
 import "./ValidateReport.css";
 
-
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-bottts-sprites';
 
 
 const confirmation = async () => {
@@ -14,6 +15,8 @@ const confirmation = async () => {
  	try {
  		const {ethereum} = window;
  		if (ethereum) {
+			var bot = createAvatar(style, {seed: contractAddress,});
+			var botname = `<p>Agent: Smart Contract</p>`;
  			const provider = new ethers.providers.Web3Provider(ethereum);
  			const signer = provider.getSigner();
  			const walletAgentContract = new ethers.Contract(contractAddress, contractABI, signer);
@@ -39,10 +42,12 @@ const confirmation = async () => {
 
  	} catch (error) {
 		debugger;
- 		  console.log(`Error inside the parsing function: ${error.error.message ?? error}`)
+ 		  console.log(`Error inside the parsing function: ${error}`)
+			document.querySelector('#ValidateReport .bot .image').innerHTML = bot;
+			document.querySelector('#ValidateReport #botname').innerHTML = botname;
 			let metaMessage = `<div class="status error">
 											<span class="sender">ERROR</span>
-											<span class="name">${error.error.message ?? error.message}</span>`;
+											<span class="name">${error.message ?? error}</span>`;
 			document.querySelector('#ValidateReport .logs').insertAdjacentHTML("beforeend", metaMessage);
  	}
  }
@@ -76,8 +81,12 @@ export default class validateReport extends Component {
 										<p>You are about to validate a report.</p>
 										<div className="reportBlock">
 											<div className="reviewData"></div>
-											<div className="logs">
-
+										  <div className="logbox">
+												<div className="bot">
+													<div className="image"></div>
+													<span id="botname"> Wallet Agent console log.</span>
+												</div>
+												<div className="logs"></div>
 											</div>
 										</div>
 									</div>
