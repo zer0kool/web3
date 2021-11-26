@@ -32,7 +32,8 @@ export default function MetaMask() {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccount(account);
-//				getAllWaves();
+				// TODO: Detect network
+
       } else {
 				var elem = document.querySelector('#meta');
     		var instance = M.Modal.getInstance(elem)
