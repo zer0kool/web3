@@ -106,7 +106,7 @@ export default class BuildWave extends Component {
 											<div className="logbox">
 												<div className="bot">
 													<div className="image"></div>
-													<span id="botname"> Connecting wave portal smart contract.</span>
+													<span id="botname"> Wave Portal console log.</span>
 												</div>
 												<div className="logs"></div>
 											</div>
