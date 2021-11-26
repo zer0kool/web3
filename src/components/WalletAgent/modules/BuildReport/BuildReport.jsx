@@ -4,6 +4,8 @@ import M from "materialize-css";
 import abi from '../../utils/WalletAgent.json';
 import "./BuildReport.css";
 
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-bottts-sprites';
 
 const sendReport = async () => {
 
@@ -12,6 +14,8 @@ const sendReport = async () => {
  	try {
  		const {ethereum} = window;
  		if (ethereum) {
+			var bot = createAvatar(style, {seed: contractAddress,});
+			var botname = `<p>Agent: Smart Contract</p>`;
  			const provider = new ethers.providers.Web3Provider(ethereum);
  			const signer = provider.getSigner();
  			const walletAgentContract = new ethers.Contract(contractAddress, contractABI, signer);
@@ -42,9 +46,11 @@ debugger;
 
  	} catch (error) {
  		  console.log(`Error inside the parsing function: ${error}`)
+			document.querySelector('#BuildReport .bot .image').innerHTML = bot;
+			document.querySelector('#BuildReport #botname').innerHTML = botname;
 			let metaMessage = `<div class="status error">
 											<span class="sender">ERROR</span>
-											<span class="name">${error.message}</span>`;
+											<span class="name">${error.message ?? error}</span>`;
 			document.querySelector('#BuildReport .logs').insertAdjacentHTML("beforeend", metaMessage);
  	}
  }
@@ -90,8 +96,12 @@ export default class BuildReport extends Component {
 													<label htmlFor="badWallet">Enter the bad wallet</label>
 												</div>
 											</div>
-											<div className="logs">
-
+											<div className="logbox">
+												<div className="bot">
+													<div className="image"></div>
+													<span id="botname"> Wallet Agent Console Log.</span>
+												</div>
+												<div className="logs"></div>
 											</div>
 										</div>
 									</div>
