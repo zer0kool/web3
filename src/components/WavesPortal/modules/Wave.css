@@ -6,8 +6,13 @@
     width: 120px;
     display: block;
     margin: 0 auto;
+		z-index: 1;
+		position: relative;
 }
-
+#botname {
+    margin: 0 auto;
+    display: block;
+}
 .logbox {
     padding: 10px;
     background-color: #f6f6f6;
