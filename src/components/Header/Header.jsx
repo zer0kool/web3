@@ -18,6 +18,7 @@ export default class Header extends Component {
 								<ul className="right">
 									<li><a href="/wave"><i className="material-icons">face</i></a></li>
 									<li><a href="/explore"><i className="material-icons">view_module</i></a></li>
+									<li><a href="/nft"><i className="material-icons">local_activity</i></a></li>
 								</ul>
             </div>
           </nav>

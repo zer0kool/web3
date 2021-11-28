@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
 import WavesPortal from './components/WavesPortal/WavesPortal';
 import Explore from './components/Explore/Explore';
+import NFT from './components/NFT/NFT';
 
 
 
@@ -28,6 +29,7 @@ function App() {
                     <Route exact path="/" element={<Main/>} />
                     <Route path="/wave" element={<WavesPortal/>} />
                     <Route path="/explore" element={<Explore/>} />
+                    <Route path="/NFT" element={<NFT/>} />
                 </Routes>
             </main>
             <Footer />
